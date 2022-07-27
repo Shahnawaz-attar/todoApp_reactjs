@@ -23,7 +23,20 @@ const AddTasks = () => {
         const newTasks = [...tasks];
         newTasks.splice(index, 1);
         setTasks(newTasks);
-        localStorage.removeItem(index);
+        const getItem = localStorage.getItem('tasks');
+        const getItemParsed = JSON.parse(getItem);
+
+        getItemParsed.map((task, i) => {
+            if (i === index) {
+                getItemParsed.splice(i, 1);
+                localStorage.setItem('tasks', JSON.stringify(getItemParsed));
+                 
+
+            }
+        }
+        )
+        
+       
     }
 
     // load from local storage
